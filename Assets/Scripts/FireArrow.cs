@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class AimandShoot : MonoBehaviour
+public class FireArrow : MonoBehaviour
 {
+    public GameObject arrow;
+
     // Start is called before the first frame update
     void Start()
     {

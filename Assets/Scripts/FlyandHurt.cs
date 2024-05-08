@@ -10,7 +10,7 @@ public class FlyandHurt : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        body.AddForce(Vector3.forward * flingAmt,ForceMode.Impulse);
+        body.AddForce(Vector3.forward * flingAmt, ForceMode.Impulse);
     }
 
     // Update is called once per frame

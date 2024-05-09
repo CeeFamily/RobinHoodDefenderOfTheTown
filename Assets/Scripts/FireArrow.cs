@@ -31,7 +31,7 @@ public class FireArrow : MonoBehaviour
         if (canFire == true)
         {
             canFire = false;
-            Instantiate(arrow, firePos.transform.position, firePos.transform.rotation);
+            Instantiate(arrow, firePos.transform.position, firePos.rotation);
             StartCoroutine(weapCooldown());
             canFire = true;
         }

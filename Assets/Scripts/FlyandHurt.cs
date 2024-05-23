@@ -10,7 +10,7 @@ public class FlyandHurt : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        GetComponentInParent<FireArrow>();
+        Collider arrowBox = GetComponent<Collider>();
 
         body = GetComponent<Rigidbody>();
 
@@ -20,7 +20,17 @@ public class FlyandHurt : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //CheckHit();
+        CheckHit();
+    }
+    private void FixedUpdate()
+    {
+        if (body.velocity != Vector3.zero)
+        {
+            body.rotation = Quaternion.LookRotation(body.velocity);
+        }
+
+        
+
     }
     void CheckHit()
     {
@@ -28,14 +38,12 @@ public class FlyandHurt : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, damageRange))
         {
-            Debug.DrawRay(transform.position, transform.forward * damageRange, Color.blue);
+            
             if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
             {
                 Health healthScript = hit.collider.GetComponent<Health>();
                 healthScript.TakeDamage(arrowDamage);
-                Debug.Log("Hit");
-                
-
+                Debug.Log("RaycastHit");
             }
 
         }
@@ -44,16 +52,24 @@ public class FlyandHurt : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject != null)
         {
 
             Health healthScript = collision.gameObject.GetComponent<Health>();
-            healthScript.TakeDamage(arrowDamage);
+            if (healthScript != null)
+            {
+                healthScript.TakeDamage(arrowDamage);
+            }   
+
+
             Debug.Log("Hit");
             Collider arrowBox = GetComponent<Collider>();
-            if (arrowBox != null)
+            if (arrowBox.enabled)
             {
-                transform.SetParent(collision.transform);
+                Debug.Log("Collider hit: " + collision.gameObject);
+                
+                transform.parent = collision.transform;
+                
                 body.isKinematic = true;
                 arrowBox.enabled = false;
             }

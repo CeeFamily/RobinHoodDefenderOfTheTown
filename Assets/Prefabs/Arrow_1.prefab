@@ -242,7 +242,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3470855422727334120}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -280,8 +280,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.044267297, y: 0.0534907, z: 0.24261248}
-  m_Center: {x: 0.0006954074, y: -0.0018475354, z: 0.63}
+  m_Size: {x: 0.044267297, y: 0.0534907, z: 0.2875675}
+  m_Center: {x: 0.0006954074, y: -0.0018475354, z: 0.22682458}
 --- !u!114 &-4684033309646959769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,5 +295,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowDamage: 50
-  flingAmt: 20
+  flingAmt: 150
   damageRange: 0.8

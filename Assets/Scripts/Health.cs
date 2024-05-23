@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    Rigidbody body;
     public float maxHealth = 100;
     public float healthValue;
     // Start is called before the first frame update
@@ -37,8 +38,12 @@ public class Health : MonoBehaviour
         Debug.Log("Player Died");
 
     }
-    void EnemyDeath()
+    IEnumerator EnemyDeath()
     {
+        //animate death here, wait, then despawn enemy? 
+        //can branch out so bodies on wagons, etc dont disappear or make wagons crash then disappear later. 
+        //not really in current scope for ragdoll or wagon crash
+        yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
 }
